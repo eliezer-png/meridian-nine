@@ -20,9 +20,61 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/brand.css">
+  <style>
+    /* The home header floats over the film rather than sitting on a ground. */
+    .mn-header--over { position: fixed; left: 0; right: 0; top: 0; }
+    .mn-footer { position: relative; z-index: 2; background: var(--ink); }
+
+    /* The engine's tag and route-label chrome mixes toward #fff, which produces
+       white pills on this dark film. Restate them as hairline marks instead —
+       the site uses rules and outlines, never filled pills. */
+    .sw-copy__tags li {
+      background: transparent;
+      border: 1px solid color-mix(in srgb, var(--gold) 38%, transparent);
+      border-radius: 0;
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.9rem;
+    }
+    .sw-route__label {
+      background: var(--ink-2);
+      color: var(--bone);
+      border: 1px solid var(--ink-3);
+      border-radius: 0;
+      font-family: var(--font-body);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.6875rem;
+    }
+    /* Copy on the film uses the site's display face, not the engine default. */
+    .sw-copy__title { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.01em; }
+    .sw-copy__eyebrow { font-family: var(--font-body); letter-spacing: 0.18em; }
+  </style>
 </head>
 <body>
   <div id="top"></div>
+  <a class="mn-skip" href="#world">Skip to content</a>
+
+  <header class="mn-header mn-header--over">
+    <div class="mn-header__in">
+      <a class="mn-word" href="index.html">Meridian<span>&nbsp;Nine</span></a>
+      <button class="mn-burger" type="button" aria-expanded="false" aria-controls="mn-nav">Menu</button>
+      <nav class="mn-nav" id="mn-nav" aria-label="Main">
+        <a href="collection.html">Collection</a>
+        <a href="calibre.html">Calibre M9</a>
+        <a href="manufacture.html">Manufacture</a>
+        <a href="ownership.html">Ownership</a>
+        <a href="boutiques.html">Boutiques</a>
+      </nav>
+    </div>
+  </header>
+
   <div id="world"></div>
 
   <script src="scrub-engine.js"></script>
@@ -31,8 +83,7 @@
     // (see render25d.py + camera-paths.md). Seams are matched on luminance rather than
     // content, so a slightly wider crossfade than the default reads better here.
     mountScrollWorld(document.getElementById('world'), {
-      brand: { name: 'Meridian Nine', href: '#top' },
-      cta: { label: 'Enquire', href: '#finale' },
+      nav: false,
       hint: 'scroll to fly in',
       diveScroll: 1.3,
       crossfade: 0.16,
@@ -109,8 +160,8 @@
           title: 'One watch. Nine a year.',
           body: 'The Meridian Nine is made nine times a year. There is no second model, and there is no waiting list you can pay to skip.',
           tags: [],
-          cta: { primary: { label: 'Request an introduction', href: '#' },
-                 secondary: { label: 'Read the calibre notes', href: '#' } },
+          cta: { primary: { label: 'Request an introduction', href: 'boutiques.html' },
+                 secondary: { label: 'The calibre', href: 'calibre.html' } },
         },
       ],
       // Architecture A (one continuous forward take) has no connectors —
@@ -118,5 +169,48 @@
       connectors: [null, null, null, null, null],
     });
   </script>
+
+<footer class="mn-footer">
+  <div class="mn-wrap">
+    <div class="mn-footer__cols">
+      <div>
+        <h2>Collection</h2>
+        <ul>
+          <li><a href="collection.html#bianco">Nine Bianco</a></li>
+          <li><a href="collection.html#notte">Nine Notte</a></li>
+          <li><a href="collection.html#terra">Nine Terra</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>The watch</h2>
+        <ul>
+          <li><a href="calibre.html">Calibre M9</a></li>
+          <li><a href="manufacture.html">The manufacture</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ownership</h2>
+        <ul>
+          <li><a href="ownership.html">Servicing</a></li>
+          <li><a href="ownership.html#certificate">The certificate</a></li>
+          <li><a href="ownership.html#buying">How to buy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="boutiques.html">Four boutiques</a></li>
+          <li><a href="mailto:enquiries@meridiannine.example">enquiries@meridiannine.example</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mn-footer__base">
+      <span>Route du Lac 9, 1347 Le Sentier, Switzerland</span>
+      <span>Meridian Nine is a fictional brand created for a demonstration.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
 </body>
 </html>
