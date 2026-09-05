@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Meridian Nine — nine years to the first watch</title>
+  <meta name="description" content="Scroll to fly through the world of Meridian Nine, from the alpine manufacture to the wrist." />
+  <style>
+    /* Dark theme: the film is near-black, so the chrome follows it. */
+    :root, .sw-root {
+      --sw-bg: #0A0C0F;
+      --sw-ink: #EDEEF0;
+      --sw-ink-soft: #8A929C;
+      --sw-accent: #C9A227;
+      --sw-font-display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+      --sw-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    }
+    body { background: #0A0C0F; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="top"></div>
+  <div id="world"></div>
+
+  <script src="scrub-engine.js"></script>
+  <script>
+    // Legs are procedural 2.5D camera moves rendered locally from the six stills
+    // (see render25d.py + camera-paths.md). Seams are matched on luminance rather than
+    // content, so a slightly wider crossfade than the default reads better here.
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'Meridian Nine', href: '#top' },
+      cta: { label: 'Enquire', href: '#finale' },
+      hint: 'scroll to fly in',
+      diveScroll: 1.3,
+      crossfade: 0.16,
+      connScroll: 0.9,
+      sections: [
+        {
+          id: 'manufacture', label: 'The Manufacture',
+          still: 'assets/scene1.jpg',
+          clip: 'assets/vid/leg1.mp4',
+          clipMobile: 'assets/vid/leg1-m.mp4',
+          accent: '#3E4A57',
+          scroll: 1.5, linger: 0.35,
+          eyebrow: 'Nine years to the first watch',
+          title: 'Time, made slowly.',
+          body: 'One building at the head of a quiet valley. Everything that becomes a Meridian Nine begins, and ends, inside it.',
+          tags: ['Founded 2016', 'Vallée de Joux'],
+        },
+        {
+          id: 'atelier', label: 'The Atelier',
+          still: 'assets/scene2.jpg',
+          clip: 'assets/vid/leg2.mp4',
+          clipMobile: 'assets/vid/leg2-m.mp4',
+          accent: '#C9A227',
+          scroll: 1.4, linger: 0.4,
+          eyebrow: 'The movement',
+          title: 'Two hundred parts, one pair of hands.',
+          body: 'Each movement is assembled, disassembled and assembled again by the same watchmaker. Their mark goes on the bridge.',
+          tags: ['In-house calibre', 'Hand-finished', 'Single-maker assembly'],
+        },
+        {
+          id: 'finishing', label: 'Finishing',
+          still: 'assets/scene3.jpg',
+          clip: 'assets/vid/leg3.mp4',
+          clipMobile: 'assets/vid/leg3-m.mp4',
+          accent: '#8A929C',
+          scroll: 1.2,
+          eyebrow: 'Case and crystal',
+          title: 'The part you feel before you read it.',
+          body: 'Cases are cut from a single billet, then brushed and polished by hand until the light breaks along one clean line.',
+          tags: ['316L steel', 'Domed sapphire'],
+        },
+        {
+          id: 'lab', label: 'Regulation',
+          still: 'assets/scene4.jpg',
+          clip: 'assets/vid/leg4.mp4',
+          clipMobile: 'assets/vid/leg4-m.mp4',
+          accent: '#1F6F6B',
+          scroll: 1.2,
+          eyebrow: 'Certification',
+          title: 'Measured for fifteen days.',
+          body: 'Every watch is regulated in five positions and two temperatures, then left to run. We publish the numbers with the watch.',
+          tags: ['−2/+4 sec/day', 'Five positions', '15-day test'],
+        },
+        {
+          id: 'boutique', label: 'The Boutique',
+          still: 'assets/scene5.jpg',
+          clip: 'assets/vid/leg5.mp4',
+          clipMobile: 'assets/vid/leg5-m.mp4',
+          accent: '#C9A227',
+          scroll: 1.3, linger: 0.35,
+          eyebrow: 'Ownership',
+          title: 'Bought once. Kept open.',
+          body: 'Sold in four cities and serviced in all of them, for as long as the watch exists. Servicing is part of the price, not an invoice later.',
+          tags: ['Lifetime servicing', 'Four boutiques'],
+        },
+        {
+          id: 'finale', label: 'The Nine',
+          still: 'assets/scene6.jpg',
+          clip: 'assets/vid/leg6.mp4',
+          clipMobile: 'assets/vid/leg6-m.mp4',
+          accent: '#C9A227',
+          scroll: 1.8, linger: 0.5,
+          eyebrow: 'And it all arrives at',
+          title: 'One watch. Nine a year.',
+          body: 'The Meridian Nine is made nine times a year. There is no second model, and there is no waiting list you can pay to skip.',
+          tags: [],
+          cta: { primary: { label: 'Request an introduction', href: '#' },
+                 secondary: { label: 'Read the calibre notes', href: '#' } },
+        },
+      ],
+      // Architecture A (one continuous forward take) has no connectors —
+      // the legs themselves chain seamlessly. Nulls keep the seams crossfaded.
+      connectors: [null, null, null, null, null],
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Intermediate render frames — regenerable with render25d.py, ~3GB
+/frames/
+preview/leg*-wip.mp4
+.DS_Store
+__pycache__/
